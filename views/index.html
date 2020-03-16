@@ -3,33 +3,48 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Socket IO Chat with Node!</title>
+	<title>ChitChat</title>
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://unpkg.com/vue"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
 	<main id="app">
-		<section class="form-container">
-			<label for="nickname">Your Nickname (optional)</label>
-			<input v-model="nickname" type="text" id="nickname" class="nickname" placeholder="What is your nickname?"> <!--v-model is from data object in main_vm.js-->
-
-			<form>
-				<label for="message">Something to say?</label>
-				<textarea v-model="message" class="message" type="text" autocomplete="off" id="textarea"></textarea>
-				<input @click.prevent="dispatchMessage" type="submit">
-			</form>
-		</section>
-
-		<section class="messages">
-			<ul id="messages">
-				<!-- render a new message component for every message -->
-				<newmessage v-for="message in messages" :msg="message"></newmessage>
-			</ul>
-		</section>
+		<div class="container">
+			<div class="row mt-5">
+				<div class="col-lg-4">
+					<section class="container-fluid h-100 form-container">
+						<label for="nickname">Username</label>
+						<input v-model="nickname" type="text" id="nickname" class="nickname" placeholder="Enter your username"> <!--v-model is from data object in main_vm.js-->
+		
+						<form>
+							<label for="message">Something to say?</label>
+							<textarea v-model="message" class="message" type="text" autocomplete="off" id="textarea"></textarea>
+							<input @click.prevent="dispatchMessage" type="submit">
+						</form>
+					</section>
+				</div>
+			
+		
+			
+			<div class="col-lg-8">
+				<section class="messages">
+					<ul id="messages">
+						<!-- render a new message component for every message -->
+						<newmessage v-for="message in messages" :msg="message"></newmessage>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
 	</main>
 	<script src="/socket.io/socket.io.js"></script>
 	<script type="module" src="js/main_vm.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
