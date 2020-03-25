@@ -1,5 +1,5 @@
 # ChitChat - Chat with friends!
-A chatapp made with Express, Node.js, and Socket.io
+A chatapp made with Express, Node.js,nSocket.io, and Vue
 
 by Syrrel Cabiling
 

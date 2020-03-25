@@ -1,72 +1,61 @@
-// imports always go first - if we're importing anything
 import ChatMessage from "./modules/ChatMessage.js";
 
+// this is from our node_modules folder
+const socket = io();
 
-const socket = io(); //loading from node_modules folder
-
-//the packet is whatever data we send thru with the connect event from the server
-//this is data destructuring. More research on this
+// the packet is whatever data we send through with the connect event from the server
 function setUserId({sID}) {
     //debugger;
     console.log(sID);
     vm.socketID = sID;
 }
 
-function showDisconnect() {
+function showDisconnectMessage() {
     console.log('a user disconnected');
 }
 
-function appendMessage(messages) {
-    vm.messages.push(messages);
+function appendMessage(message) {
+    vm.messages.push(message);
 }
 
 
 const vm = new Vue({
     data: {
-        // messages: [ //object we're reffering to
-        //     // {
-        //     //     name: "Yoooo",
-        //     //     content: "hello sup"
-        //     // },
-        //     // {
-        //     //     name: "hola",
-        //     //     content: "HOOOOLA"
-        //     // }
-
-        //     //THIS POPS UP IN THE CHAT BOX
-        // ]
-
         socketID: "",
-        message: "",
+        message: "", // store whatever we type in the text area
         nickname: "",
-        messages: []
+        messages: [],
+        emoji: []
     },
 
     methods: {
-        //emit a message event to the server so that it can turn send this t anyone whp's connected 
+        // emit a message event to the server so thay it can in turn send this to anyone who's connected
         dispatchMessage() {
             console.log('handle emit message');
-            
-            //notice the sdouble pipe || is an "or" operator if the first value is set, use it. Else use whatever comes after the "or" operator
+
+            // the double pipe is an "or" operator
             socket.emit('chat_message', {
-                content: this.message,
-                name: this.nickname || "anonymous" //chosen nickname ORRRRR stay anonymous
+                content: this.message + this.emoji,
+                name: this.nickname || "anonymous"
             })
 
             this.message = "";
-            this.nickname = ""; //refreshing the form after sending message
+            this.emoji = "";
+
+           
         }
     },
 
     mounted: function() {
         console.log('vue is done mounting');
     },
+
     components: {
-        newmessage: ChatMessage 
+        newmessage: ChatMessage
     }
 }).$mount("#app");
 
 
 socket.addEventListener('connected', setUserId);
-socket.addEventListener('disconnect',showDisconnect);
+socket.addEventListener('disconnect', showDisconnectMessage);
 socket.addEventListener('new_message', appendMessage);
