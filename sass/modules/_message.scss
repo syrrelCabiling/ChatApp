@@ -1,3 +1,17 @@
+.logo {
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 2%;
+    color: white;
+    height: 15%;
+}
+
+.logo h1 {
+    float: right;
+}
+
+
 .new-message { 
     span { font-size: 0.8rem; display: block; margin-bottom: 2px; }
 
@@ -9,10 +23,31 @@
     color: white;
     float:left;
     clear: both;
+    overflow-x: scroll;
 }
 
 .my-message {
     float: right !important;
+    min-height: 30%;
     background-color: #8E54E9;
     color: white;
+    overflow-x: scroll;
+}
+
+#notifyType {
+    color: black;
+    z-index: 100;
+    background-color: red;
+    height: 50px;
+}
+
+table {
+    background-color: white;
+    border-radius: 15px;
+
+    margin-top: 3%;
+}
+
+.emoji_div {
+    padding: 5% !important;
 }

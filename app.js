@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var fs = require('file-system');
 
 // add socket.io
 const io = require('socket.io')(); //running function right away
@@ -22,6 +23,7 @@ const server = app.listen(port, () => {
 // attach our chat server to our app
 io.attach(server);
 
+
 io.on('connection', function(socket) {
     console.log('a user has connected');
     socket.emit('connected', {sID: socket.id, message: "new connection"});
@@ -30,10 +32,38 @@ io.on('connection', function(socket) {
         console.log(msg); //lets see what the payload is from the client side
 
         //tell the connection manager which is socket.io to send this message to everyone connected to our app. our app will then get this meesage including the sender
-        io.emit('new_message', { id: socket.id, message: msg })
+        io.emit('new_message', { id: socket.id, message: msg})
+    });
+
+    socket.on('chat_message', function(emojis) {
+        console.log(msg); //lets see what the payload is from the client side
+
+        //tell the connection manager which is socket.io to send this message to everyone connected to our app. our app will then get this meesage including the sender
+        io.emit('new_message', { id: socket.id, emoji: emojis})
     });
 
     socket.on('disconnect', function() {
         console.log('a user has disconnected');
-    })
-})
+    });
+
+    // socket.on('typing', function(data){
+    //     socket.broadcast.emit('typing', data)
+    // });
+
+    // //we're broadcasting when each user is typing
+    // socket.on('typing', function(data){
+    //     socket.broadcast.emit('typing', data)
+    //   });
+
+
+ });
+
+
+//  io.on('connection', function(socket){
+//     fs.readFile(__dirname + '/images/image.jpg', function(err, buf){
+//       // it's possible to embed binary data
+//       // within arbitrarily-complex objects
+//       socket.emit('image', { image: true, buffer: buf });
+//       console.log('image file is initialized');
+//     })
+//  });

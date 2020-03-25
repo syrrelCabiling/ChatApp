@@ -5,11 +5,13 @@ export default {
     props: ['msg'], //this is the object; inside data
 
     template: `
-
+    <section>
         <p class="new-message" :class="{'my-message' : matchedID}"> 
             <span>{{ msg.message.name }} says: </span>
             {{ msg.message.content }}
         </p>
+
+    </section>
     `,
 
     data: function() { 
@@ -17,5 +19,7 @@ export default {
             message: "hello from the template",
             matchedID: this.$parent.socketID == this.msg.id //parent is talking about main_vm
         };
+    }, 
+    methods: {
     }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "vanrys_t_chatapp",
+  "name": "chatapp",
   "version": "1.0.0",
-  "description": "social media app ",
+  "description": "a chatapp",
   "main": "app.js",
   "scripts": {
     "start": "node app"
@@ -9,7 +9,10 @@
   "author": "TVR",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "express": "^4.16.4",
-    "socket.io": "^2.2.0"
+    "file-system": "^2.2.2",
+    "socket.io": "^2.2.0",
+    "socketio-file-upload": "^0.7.0"
   }
 }
