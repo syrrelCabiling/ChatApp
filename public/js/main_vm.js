@@ -18,6 +18,10 @@ function appendMessage(message) {
     vm.messages.push(message);
 }
 
+function appendEmojis(emoji) {
+    vm.messages.push(emoji);
+}
+
 
 const vm = new Vue({
     data: {
@@ -35,16 +39,25 @@ const vm = new Vue({
 
             // the double pipe is an "or" operator
             socket.emit('chat_message', {
-                content: this.message + this.emoji,
+                content: this.message,
                 name: this.nickname || "anonymous"
             })
 
             this.message = "";
-            this.emoji = "";
+
 
            
         }
     },
+
+    // dispatchEmojis(){
+    //     socket.emit('chat_message', {
+    //         content: this.emoji,
+    //         name: this.nickname || "anonymous"
+    //     })
+
+    //     this.emoji = "";
+    // },
 
     mounted: function() {
         console.log('vue is done mounting');

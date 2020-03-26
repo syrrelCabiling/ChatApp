@@ -16,3 +16,6 @@ by Syrrel Cabiling
 #### Resources
 - https://unsplash.com
 
+#### Footnote
+``` emoji only shows up before any texts 
+
