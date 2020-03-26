@@ -17,5 +17,7 @@ by Syrrel Cabiling
 - https://unsplash.com
 
 #### Footnote
-``` emoji only shows up before any texts 
+```
+emoji only shows up before any texts 
+ ```
 
