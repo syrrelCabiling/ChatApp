@@ -160,6 +160,9 @@ table {
 .emoji_div {
   padding: 5% !important; }
 
+.my_emoji {
+  cursor: pointer; }
+
 .contacts img {
   width: 20%; }
 

@@ -77,7 +77,7 @@ emoji = [
 
 ]
 
-//get the div 
+//get the table 
 table = document.querySelector("table");
 
 
@@ -89,15 +89,25 @@ for(index = 0 ; index <= emoji.length -1; index++){
 }
 
 my_emoji = document.querySelectorAll(".my_emoji");
-for(i = 0; i <= my_emoji.length; i++ ){
-    // console.log(i);
-    my_emoji[i].addEventListener('click', (event)=>{
-        let emoji_clicked = event.target.textContent;
-        textarea.value = emoji_clicked;
 
-    })
-
+window.onload= function (){
+    for(i = 0; i <= my_emoji.length; i++ ){
+        // console.log(i);
+        my_emoji[i].addEventListener('click', (event)=>{
+            let emoji_clicked = event.target.textContent;
+            textarea.value = emoji_clicked; 
+            // eval(emoji_clicked);
+    
+        })
+    }
 }
+
+
+
+
+
+
+
 
 // function emoji_msg() {
 //     document.getElementById("textarea").value = emoji_clicked;
