@@ -15,6 +15,7 @@ by Syrrel Cabiling
 
 #### Resources
 - https://unsplash.com
+- Referrence video: https://www.youtube.com/watch?v=eSzZuBNIzpM
 
 #### Footnote
 ```
