@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "file-system": "^2.2.2",
     "socket.io": "^2.2.0",
     "socketio-file-upload": "^0.7.0"
